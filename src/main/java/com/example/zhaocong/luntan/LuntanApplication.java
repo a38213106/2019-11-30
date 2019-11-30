@@ -1,4 +1,4 @@
-package com.example.zhaocong.luntan.luntan;
+package com.example.zhaocong.luntan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
