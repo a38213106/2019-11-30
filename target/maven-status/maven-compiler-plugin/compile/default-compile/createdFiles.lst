@@ -1,0 +1,8 @@
+com\example\zhaocong\luntan\mapper\UserMapper.class
+com\example\zhaocong\luntan\provider\GithubProvider.class
+com\example\zhaocong\luntan\controller\AuthorizeController.class
+com\example\zhaocong\luntan\model\User.class
+com\example\zhaocong\luntan\model\GithubUser.class
+com\example\zhaocong\luntan\controller\Index.class
+com\example\zhaocong\luntan\LuntanApplication.class
+com\example\zhaocong\luntan\model\AccessToken.class
