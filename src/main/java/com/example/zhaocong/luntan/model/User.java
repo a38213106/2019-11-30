@@ -69,4 +69,7 @@ public class User {
         this.createTime = createTime;
         this.modifyTime = modifyTime;
     }
+
+    public User() {
+    }
 }
