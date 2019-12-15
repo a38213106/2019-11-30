@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,6 @@ public class PublishController {
     @Autowired
     private UserMapper userMapper;
 
-    @Autowired
-    private Question question;
 
     @Autowired
     private QuestionMapper questionMapper;
@@ -35,19 +34,35 @@ public class PublishController {
 
     @PostMapping(value="/publish")
     public String questionPublish(@RequestParam("title") String title,@RequestParam("description") String description,@RequestParam("tag") String tag, HttpServletRequest request, Model model){
+        model.addAttribute("title",title);
+        model.addAttribute("description",description);
+        model.addAttribute("tag",tag);
+        if(StringUtils.isEmpty(title)){
+            model.addAttribute("error","标题不能为空");
+            return "publish";
+        }
+        if(StringUtils.isEmpty(description)){
+            model.addAttribute("error","问题补充不能为空");
+            return "publish";
+        }
+        if(StringUtils.isEmpty(tag)){
+            model.addAttribute("error","标签不能为空");
+            return "publish";
+        }
         Cookie[] cookies=request.getCookies();
         User user=null;
-        for(Cookie cookie:cookies){
-            if(cookie.getName().equals("token")){
-                String token=cookie.getValue();
-                user=userMapper.findUserByToken(token);
-                if(user!=null) {
-                    request.getSession().setAttribute("user", user);
-                    break;
+        if(cookies!=null && cookies.length!=0) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    String token = cookie.getValue();
+                    user = userMapper.findUserByToken(token);
+                    if (user != null) {
+                        request.getSession().setAttribute("user", user);
+                        break;
+                    }
                 }
             }
         }
-
         if(user==null){
             model.addAttribute("error","账号未登陆");
             return "publish";

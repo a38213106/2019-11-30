@@ -8,6 +8,15 @@ public class User {
     private String token;
     private Date createTime;
     private Date modifyTime;
+    private String photo_img;
+
+    public String getPhoto_img() {
+        return photo_img;
+    }
+
+    public void setPhoto_img(String photo_img) {
+        this.photo_img = photo_img;
+    }
 
     public String getUser_id() {
         return user_id;
@@ -62,12 +71,13 @@ public class User {
                 '}';
     }
 
-    public User(String user_id, String userName, String token, Date createTime, Date modifyTime) {
+    public User(String user_id, String userName, String token, Date createTime, Date modifyTime, String photo_img) {
         this.user_id = user_id;
         this.userName = userName;
         this.token = token;
         this.createTime = createTime;
         this.modifyTime = modifyTime;
+        this.photo_img = photo_img;
     }
 
     public User() {

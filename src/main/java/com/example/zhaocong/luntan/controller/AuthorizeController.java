@@ -41,11 +41,11 @@ public class AuthorizeController {
         //调GITHUB的登陆
         String getToken=githubProvider.getAccessToken(new AccessToken(client_id,client_secret,code,redirect_uri,state));
         GithubUser githubUser=githubProvider.getUser( getToken);
-        System.out.println(githubUser.getName());
+
         if(githubUser!=null){
             //登陆成功，写SESSION和COOKIE
             String token = UUID.randomUUID().toString();
-            userMapper.insertUser(new User(String.valueOf(githubUser.getId()),githubUser.getName(),token,new Date(),new Date()));
+            userMapper.insertUser(new User(String.valueOf(githubUser.getId()),githubUser.getName(),token,new Date(),new Date(),githubUser.getAvatarUrl()));
             response.addCookie(new Cookie("token",token));
             return "redirect:/";
         }else{
