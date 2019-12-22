@@ -21,10 +21,6 @@ import java.util.Date;
 public class PublishController {
 
     @Autowired
-    private UserMapper userMapper;
-
-
-    @Autowired
     private QuestionMapper questionMapper;
 
     @GetMapping(value="/publish")
@@ -49,20 +45,8 @@ public class PublishController {
             model.addAttribute("error","标签不能为空");
             return "publish";
         }
-        Cookie[] cookies=request.getCookies();
-        User user=null;
-        if(cookies!=null && cookies.length!=0) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
-                    String token = cookie.getValue();
-                    user = userMapper.findUserByToken(token);
-                    if (user != null) {
-                        request.getSession().setAttribute("user", user);
-                        break;
-                    }
-                }
-            }
-        }
+
+        User user=(User)request.getSession().getAttribute("user");
         if(user==null){
             model.addAttribute("error","账号未登陆");
             return "publish";
