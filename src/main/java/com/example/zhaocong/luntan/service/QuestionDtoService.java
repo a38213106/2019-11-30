@@ -1,5 +1,7 @@
 package com.example.zhaocong.luntan.service;
 
+import com.example.zhaocong.luntan.exception.CustomerizeErrorCode;
+import com.example.zhaocong.luntan.exception.CustomerizeException;
 import com.example.zhaocong.luntan.mapper.QuestionMapper;
 import com.example.zhaocong.luntan.mapper.UserMapper;
 import com.example.zhaocong.luntan.model.Question;
@@ -23,7 +25,7 @@ public class QuestionDtoService {
 
     public QuestionPageList getList(Integer pageNo, Integer pageSize) {
         QuestionPageList questionPageList = new QuestionPageList();
-        int totalCount=questionMapper.totalCount();
+        int totalCount = questionMapper.totalCount();
         Integer totalPage;
         if (totalCount % pageSize == 0) {
             totalPage = totalCount / pageSize;
@@ -38,27 +40,27 @@ public class QuestionDtoService {
             pageNo = totalPage;
         }
 
-        questionPageList.PageSet(totalPage,pageNo);
+        questionPageList.PageSet(totalPage, pageNo);
 
-        int offest=pageSize*(pageNo-1);   //mysql分页的偏移量
+        int offest = pageSize * (pageNo - 1);   //mysql分页的偏移量
 
-        List<QuestionDto> list=new ArrayList<QuestionDto>();
+        List<QuestionDto> list = new ArrayList<QuestionDto>();
 
-        for(Question question:questionMapper.findAll(offest,pageSize)){
-            User user=userMapper.findUserByCreator(question.getCreator()+"");
-            QuestionDto questionDto=new QuestionDto();
-            BeanUtils.copyProperties(question,questionDto);
+        for (Question question : questionMapper.findAll(offest, pageSize)) {
+            User user = userMapper.findUserByCreator(question.getCreator() + "");
+            QuestionDto questionDto = new QuestionDto();
+            BeanUtils.copyProperties(question, questionDto);
             questionDto.setUser(user);
             list.add(questionDto);
         }
         questionPageList.setQuestionData(list);
 
-        return  questionPageList;
+        return questionPageList;
     }
 
     public QuestionPageList getMyQuestion(String user_id, Integer pageNo, Integer pageSize) {
         QuestionPageList questionPageList = new QuestionPageList();
-        int totalCount=questionMapper.totalCountByUserId(user_id);
+        int totalCount = questionMapper.totalCountByUserId(user_id);
         Integer totalPage;
         if (totalCount % pageSize == 0) {
             totalPage = totalCount / pageSize;
@@ -73,21 +75,34 @@ public class QuestionDtoService {
             pageNo = totalPage;
         }
 
-        questionPageList.PageSet(totalPage,pageNo);
+        questionPageList.PageSet(totalPage, pageNo);
 
-        int offest=pageSize*(pageNo-1);   //mysql分页的偏移量
+        int offest = pageSize * (pageNo - 1);   //mysql分页的偏移量
 
-        List<QuestionDto> list=new ArrayList<QuestionDto>();
+        List<QuestionDto> list = new ArrayList<QuestionDto>();
 
-        for(Question question:questionMapper.findAllByUserId(user_id,offest,pageSize)){
-            User user=userMapper.findUserByCreator(question.getCreator()+"");
-            QuestionDto questionDto=new QuestionDto();
-            BeanUtils.copyProperties(question,questionDto);
+        for (Question question : questionMapper.findAllByUserId(user_id, offest, pageSize)) {
+            User user = userMapper.findUserByCreator(question.getCreator() + "");
+            QuestionDto questionDto = new QuestionDto();
+            BeanUtils.copyProperties(question, questionDto);
             questionDto.setUser(user);
             list.add(questionDto);
         }
         questionPageList.setQuestionData(list);
 
-        return  questionPageList;
+        return questionPageList;
+    }
+
+    public QuestionDto getQuestionById(Integer id) {
+        Question question = questionMapper.getQuestionById(id);
+        if (question == null) {
+            throw new CustomerizeException(CustomerizeErrorCode.QUESTION_NOT_FOUND);
+        }
+        QuestionDto questionDto = new QuestionDto();
+        BeanUtils.copyProperties(question, questionDto);
+
+        User user = userMapper.findUserByCreator(question.getCreator() + "");
+        questionDto.setUser(user);
+        return questionDto;
     }
 }

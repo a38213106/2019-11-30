@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.zhaocong.luntan.mapper.QuestionMapper">
+    <resultMap id="BaseResultMap" type="com.example.zhaocong.luntan.model.Question">
+        <result column="ID" jdbcType="INTEGER" property="id" />
+        <result column="TITLE" jdbcType="VARCHAR" property="title" />
+        <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+        <result column="GMT_CREATE" jdbcType="TIMESTAMP" property="gmt_create" />
+        <result column="GMT_MODIFY" jdbcType="TIMESTAMP" property="gmt_modify" />
+        <result column="CREATOR" jdbcType="INTEGER" property="creator" />
+        <result column="COMMENT_COUNT" jdbcType="INTEGER" property="comment_count" />
+        <result column="VIEW_COUNT" jdbcType="INTEGER" property="view_count" />
+        <result column="PRAISE" jdbcType="INTEGER" property="praise" />
+        <result column="TAG" jdbcType="VARCHAR" property="tag" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,description,gmt_create,gmt_modify,creator,ifnull(comment_count,0) comment_count,ifnull(view_count,0) view_count,praise,tag
+    </sql>
+
+    <insert id="insertQuestion" parameterType="com.example.zhaocong.luntan.model.Question">
+         insert into QUESTION (TITLE, DESCRIPTION,
+        GMT_CREATE, GMT_MODIFY, CREATOR,
+        COMMENT_COUNT, VIEW_COUNT,PRAISE,TAG)
+        values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
+        #{gmt_create,jdbcType=DATE}, #{gmt_modify,jdbcType=DATE}, #{creator,jdbcType=INTEGER},
+        #{comment_count,jdbcType=INTEGER}, #{view_count,jdbcType=INTEGER},#{praise,jdbcType=INTEGER},#{tag,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+         from question
+        order by gmt_modify desc
+        limit #{offest,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+
+    <select id="totalCount" resultType="Integer">
+        select count(1) from question
+    </select>
+
+    <select id="findAllByUserId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from question where creator=#{user_id,jdbcType=VARCHAR} order by gmt_modify desc limit #{offest,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+
+    <select id="totalCountByUserId" resultType="Integer">
+        select count(1) from question where creator=#{user_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getQuestionById" resultMap="BaseResultMap">
+        SELECT
+         <include refid="Base_Column_List" />
+        from question where id=#{id,jdbcType=INTEGER}
+        order by gmt_modify desc
+    </select>
+
+    <update id="updateQuestion" parameterType="com.example.zhaocong.luntan.model.Question">
+        update QUESTION
+        <set>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+                gmt_modify = #{gmt_modify,jdbcType=DATE},
+            <if test="tag != null">
+                tag = #{tag,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id=#{id,jdbcType=INTEGER}
+    </update>
+</mapper>

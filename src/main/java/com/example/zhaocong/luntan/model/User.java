@@ -9,6 +9,15 @@ public class User {
     private Date createTime;
     private Date modifyTime;
     private String photo_img;
+    private String bio;
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 
     public String getPhoto_img() {
         return photo_img;
