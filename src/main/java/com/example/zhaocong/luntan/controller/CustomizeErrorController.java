@@ -11,7 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by codedrinker on 2019/5/28.
+ * author zhaocong
+ * 抓取网站中不是运行时方法报的错误，比如404，500什么的
  */
 @Controller
 @RequestMapping("${server.error.path:${error.path:/error}}")

@@ -94,6 +94,11 @@ public class QuestionDtoService {
     }
 
     public QuestionDto getQuestionById(Integer id) {
+        //点击详情问题详情页面，增加阅读数
+        Question incQuestion = new Question();
+        incQuestion.setId(id);
+        incQuestion.setView_count(1);
+        questionMapper.updateView_count(incQuestion);
         Question question = questionMapper.getQuestionById(id);
         if (question == null) {
             throw new CustomerizeException(CustomerizeErrorCode.QUESTION_NOT_FOUND);

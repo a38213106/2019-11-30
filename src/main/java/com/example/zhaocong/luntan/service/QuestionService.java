@@ -37,4 +37,8 @@ public class QuestionService {
             }
         }
     }
+
+    public void incView_count(Integer id) {
+
+    }
 }

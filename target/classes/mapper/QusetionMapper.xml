@@ -31,7 +31,6 @@
         select
         <include refid="Base_Column_List" />
          from question
-        order by gmt_modify desc
         limit #{offest,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
     </select>
 
@@ -42,7 +41,7 @@
     <select id="findAllByUserId" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from question where creator=#{user_id,jdbcType=VARCHAR} order by gmt_modify desc limit #{offest,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+        from question where creator=#{user_id,jdbcType=VARCHAR}  limit #{offest,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
     </select>
 
     <select id="totalCountByUserId" resultType="Integer">
@@ -53,7 +52,6 @@
         SELECT
          <include refid="Base_Column_List" />
         from question where id=#{id,jdbcType=INTEGER}
-        order by gmt_modify desc
     </select>
 
     <update id="updateQuestion" parameterType="com.example.zhaocong.luntan.model.Question">
@@ -71,5 +69,12 @@
             </if>
         </set>
         where id=#{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateView_count" parameterType="com.example.zhaocong.luntan.model.Question" >
+             update QUESTION
+             SET
+             view_count=view_count+#{view_count,jdbcType=INTEGER}
+             where id=#{id,jdbcType=INTEGER}
     </update>
 </mapper>

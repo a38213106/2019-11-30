@@ -14,7 +14,17 @@ public class  ResponseBean<T> {
         this.data = data;
     }
 
-    public static <T> ResponseBean success(String msg,T object){
-        return new ResponseBean<T>(StatusCode.HTTP_OK.getIndex(),msg,object);
+    public ResponseBean(String statusCode, String msg) {
+        this.statusCode = statusCode;
+        this.msg = msg;
+    }
+
+
+    public static <T> ResponseBean success(T object){
+        return new ResponseBean<T>(StatusCode.HTTP_OK.getIndex(),StatusCode.HTTP_OK.getName(),object);
+    }
+
+    public static  <T> ResponseBean error(String msg,String statusCode){
+        return  new ResponseBean<T>(msg,statusCode);
     }
 }
