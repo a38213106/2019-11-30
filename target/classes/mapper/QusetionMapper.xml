@@ -77,4 +77,11 @@
              view_count=view_count+#{view_count,jdbcType=INTEGER}
              where id=#{id,jdbcType=INTEGER}
     </update>
+
+    <update id="updateComment_count" parameterType="com.example.zhaocong.luntan.model.Question" >
+             update QUESTION
+             SET
+             COMMENT_COUNT=IFNULL(COMMENT_COUNT,0)+#{comment_count,jdbcType=INTEGER}
+             where id=#{id,jdbcType=INTEGER}
+    </update>
 </mapper>

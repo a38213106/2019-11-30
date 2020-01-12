@@ -1,8 +1,12 @@
 package com.example.zhaocong.luntan.model;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class User {
+    private Integer id;
     private String user_id;
     private String userName;
     private String token;
@@ -10,64 +14,6 @@ public class User {
     private Date modifyTime;
     private String photo_img;
     private String bio;
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
-    public String getPhoto_img() {
-        return photo_img;
-    }
-
-    public void setPhoto_img(String photo_img) {
-        this.photo_img = photo_img;
-    }
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
 
     @Override
     public String toString() {

@@ -1,34 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.zhaocong.luntan.mapper.CommentMapper">
-       <resultMap id="BaseResultMap" type="com.example.zhaocong.luntan.model.Comment">
-           <id column="ID" jdbcType="BIGINT" property="id" />
-           <result column="PARENT_ID" jdbcType="INTEGER" property="parent_id" />
-           <result column="TYPE" jdbcType="INTEGER" property="type" />
-           <result column="COMMENTATOR" jdbcType="INTEGER" property="commentor" />
-           <result column="GMT_CREATE" jdbcType="DATE" property="gmt_create" />
-           <result column="GMT_MODIFY" jdbcType="DATE" property="gmt_modify" />
-           <result column="LIKE_COUNT" jdbcType="BIGINT" property="like_count" />
-           <result column="CONTENT" jdbcType="VARCHAR" property="content" />
-           <result column="COMMENT_COUNT" jdbcType="INTEGER" property="comment_count" />
-       </resultMap>
+    <resultMap id="BaseResultMap" type="com.example.zhaocong.luntan.model.Comment">
+        <id column="ID" jdbcType="BIGINT" property="id"/>
+        <result column="PARENT_ID" jdbcType="INTEGER" property="parent_id"/>
+        <result column="TYPE" jdbcType="INTEGER" property="type"/>
+        <result column="COMMENTOR" jdbcType="INTEGER" property="commentor"/>
+        <result column="GMT_CREATE" jdbcType="DATE" property="gmt_create"/>
+        <result column="GMT_MODIFY" jdbcType="DATE" property="gmt_modify"/>
+        <result column="LIKE_COUNT" jdbcType="BIGINT" property="like_count"/>
+        <result column="CONTENT" jdbcType="VARCHAR" property="content"/>
+        <result column="COMMENT_COUNT" jdbcType="INTEGER" property="comment_count"/>
+    </resultMap>
 
     <sql id="Base_Column_List">
         ID, PARENT_ID, TYPE, COMMENTOR, GMT_CREATE, GMT_MODIFY, LIKE_COUNT, CONTENT,
         COMMENT_COUNT
     </sql>
-     <insert id="insertComment" parameterType="com.example.zhaocong.luntan.model.Comment">
+
+    <insert id="insertComment" parameterType="com.example.zhaocong.luntan.model.Comment">
                 INSERT INTO COMMENT
-                (parent_id,type,commentor,gmt_create,gmt_modify,like_count,content)
+                (parent_id,type,commentor,gmt_create,gmt_modify,like_count,content,COMMENT_COUNT)
                 VALUES (
                 #{c.parent_id},#{c.type},#{c.commentor},#{c.gmt_create},
-                #{c.gmt_modify},#{c.like_count},#{c.content}
+                #{c.gmt_modify},#{c.like_count},#{c.content},#{c.comment_count}
                 )
        </insert>
 
-      <select id="getComment" resultMap="BaseResultMap">
-          SELECT
-    <include refid="Base_Column_List "/>
-          where id={id,jdbcType=INTEGER }
-      </select>
+    <select id="getComment" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM COMMENT
+        where id=#{parent_id,jdbcType=INTEGER }
+    </select>
+
+    <update id="updateComment_count" parameterType="com.example.zhaocong.luntan.model.Comment">
+             update COMMENT
+             SET
+             COMMENT_COUNT=IFNULL(COMMENT_COUNT,0)+#{comment_count,jdbcType=INTEGER}
+             where id=#{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getCommentListByParentId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM COMMENT
+        where PARENT_ID=#{id,jdbcType=INTEGER }
+        and type=#{type,jdbcType=INTEGER }
+        order by GMT_CREATE desc
+    </select>
 </mapper>

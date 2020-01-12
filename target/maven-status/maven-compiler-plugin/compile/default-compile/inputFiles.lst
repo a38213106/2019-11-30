@@ -11,12 +11,14 @@ E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\mapper\QuestionMapper.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\service\UserService.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\controller\ProfileController.java
+E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\enums\CommentTypeEnum.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\exception\CustomerizeErrorCode.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\exception\ICustomerizeExceptionCode.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\model\AccessToken.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\controller\PublishController.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\controller\CustomizeErrorController.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\LuntanApplication.java
+E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\service\CommentService.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\controller\AuthorizeController.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\provider\GithubProvider.java
 E:\麻酱笔记论坛站点\2019-11-30\src\main\java\com\example\zhaocong\luntan\model\Comment.java
