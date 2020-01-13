@@ -1,5 +1,6 @@
 package com.example.zhaocong.luntan.controller;
 
+import com.example.zhaocong.luntan.enums.CommentTypeEnum;
 import com.example.zhaocong.luntan.model.CommentDTO;
 import com.example.zhaocong.luntan.model.QuestionDto;
 import com.example.zhaocong.luntan.service.CommentService;
@@ -29,7 +30,7 @@ public class QuestionController {
     public String question(@PathVariable(name="id",required = true) Integer id,Model model){
         QuestionDto questionDto=questionDtoService.getQuestionById(id);
 
-        List<CommentDTO> comments=commentService.getCommentListByQuestionId(id);
+        List<CommentDTO> comments=commentService.getCommentListByQuestionId(id, CommentTypeEnum.Qusetion);
         model.addAttribute("question",questionDto);
         model.addAttribute("comments",comments);
         return "question";

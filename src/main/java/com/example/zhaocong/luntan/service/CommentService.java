@@ -74,8 +74,8 @@ public class CommentService {
         }
     }
 
-    public List<CommentDTO> getCommentListByQuestionId(Integer id) {
-        List<Comment> comments = commentMapper.getCommentListByParentId(id, CommentTypeEnum.Qusetion.getType());
+    public List<CommentDTO> getCommentListByQuestionId(Integer id,CommentTypeEnum type) {
+        List<Comment> comments = commentMapper.getCommentListByParentId(id, type.getType());
         if (comments.size() == 0) {
             return new ArrayList<>();
         }
