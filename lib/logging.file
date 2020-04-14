@@ -1,0 +1,69 @@
+2020-02-25 11:58:11.697  INFO 801296 --- [restartedMain] c.e.zhaocong.luntan.LuntanApplication    : Starting LuntanApplication on PC-20190610RMNY with PID 801296 (started by Administrator in E:\麻酱笔记论坛站点\2019-11-30)
+2020-02-25 11:58:11.705  INFO 801296 --- [restartedMain] c.e.zhaocong.luntan.LuntanApplication    : No active profile set, falling back to default profiles: default
+2020-02-25 11:58:11.779  INFO 801296 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-02-25 11:58:11.779  INFO 801296 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-02-25 11:58:14.072  INFO 801296 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8887 (http)
+2020-02-25 11:58:14.103  INFO 801296 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-02-25 11:58:14.103  INFO 801296 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2020-02-25 11:58:14.261  INFO 801296 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-02-25 11:58:14.261  INFO 801296 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2481 ms
+2020-02-25 11:58:15.416  INFO 801296 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-25 11:58:15.694  INFO 801296 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-02-25 11:58:16.122  INFO 801296 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-02-25 11:58:16.219  INFO 801296 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8887 (http) with context path ''
+2020-02-25 11:58:16.224  INFO 801296 --- [restartedMain] c.e.zhaocong.luntan.LuntanApplication    : Started LuntanApplication in 5.15 seconds (JVM running for 6.253)
+2020-02-25 11:58:46.429  INFO 801296 --- [http-nio-8887-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-02-25 11:58:46.430  INFO 801296 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-02-25 11:58:46.447  INFO 801296 --- [http-nio-8887-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2020-02-25 11:58:46.521  INFO 801296 --- [http-nio-8887-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-02-25 11:58:46.524  WARN 801296 --- [http-nio-8887-exec-1] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-02-25 11:58:46.724  INFO 801296 --- [http-nio-8887-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-02-25 11:58:46.734 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.QuestionMapper.totalCount      : ==>  Preparing: select count(1) from question 
+2020-02-25 11:58:46.769 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.QuestionMapper.totalCount      : ==> Parameters: 
+2020-02-25 11:58:46.802 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.QuestionMapper.totalCount      : <==      Total: 1
+2020-02-25 11:58:46.807 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.mapper.QuestionMapper.findAll    : ==>  Preparing: select id,title,description,gmt_create,gmt_modify,creator,ifnull(comment_count,0) comment_count,ifnull(view_count,0) view_count,praise,tag from question order by gmt_create desc limit ?,? 
+2020-02-25 11:58:46.808 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.mapper.QuestionMapper.findAll    : ==> Parameters: 0(Integer), 3(Integer)
+2020-02-25 11:58:46.813 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.mapper.QuestionMapper.findAll    : <==      Total: 3
+2020-02-25 11:58:46.813 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : ==>  Preparing: select id,userid ,username,token,createtime,modifytime,photo_img from USER where userId=? ORDER BY CREATETIME desc limit 0,1 
+2020-02-25 11:58:46.814 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : ==> Parameters: 33488506(String)
+2020-02-25 11:58:46.819 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : <==      Total: 1
+2020-02-25 11:58:46.829 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : ==>  Preparing: select id,userid ,username,token,createtime,modifytime,photo_img from USER where userId=? ORDER BY CREATETIME desc limit 0,1 
+2020-02-25 11:58:46.829 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : ==> Parameters: 33488506(String)
+2020-02-25 11:58:46.831 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : <==      Total: 1
+2020-02-25 11:58:46.831 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : ==>  Preparing: select id,userid ,username,token,createtime,modifytime,photo_img from USER where userId=? ORDER BY CREATETIME desc limit 0,1 
+2020-02-25 11:58:46.832 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : ==> Parameters: 33488506(String)
+2020-02-25 11:58:46.833 DEBUG 801296 --- [http-nio-8887-exec-1] c.e.z.l.m.UserMapper.findUserByCreator   : <==      Total: 1
+2020-02-25 11:59:05.620  INFO 801296 --- [http-nio-8887-exec-4] c.e.zhaocong.luntan.aop.aspectj.AopLog   : 【请求 URL】：http://localhost:8887/callback
+2020-02-25 11:59:05.620  INFO 801296 --- [http-nio-8887-exec-4] c.e.zhaocong.luntan.aop.aspectj.AopLog   : 【请求 IP】：0:0:0:0:0:0:0:1
+2020-02-25 11:59:05.623  INFO 801296 --- [http-nio-8887-exec-4] c.e.zhaocong.luntan.aop.aspectj.AopLog   : 【请求类名】：com.example.zhaocong.luntan.controller.AuthorizeController，【请求方法名】：callback
+2020-02-25 11:59:05.670  INFO 801296 --- [http-nio-8887-exec-4] c.e.zhaocong.luntan.aop.aspectj.AopLog   : 【请求参数】：{"code":["845ebb1e13900839090f"],"state":["1"]}，
+2020-02-25 11:59:08.057 DEBUG 801296 --- [http-nio-8887-exec-4] c.e.z.l.m.UserMapper.findUserByUserId    : ==>  Preparing: select id,userid ,username,token,createtime,modifytime,photo_img from USER where userId=? ORDER BY CREATETIME desc 
+2020-02-25 11:59:08.058 DEBUG 801296 --- [http-nio-8887-exec-4] c.e.z.l.m.UserMapper.findUserByUserId    : ==> Parameters: 33488506(String)
+2020-02-25 11:59:08.060 DEBUG 801296 --- [http-nio-8887-exec-4] c.e.z.l.m.UserMapper.findUserByUserId    : <==      Total: 1
+2020-02-25 11:59:08.081 DEBUG 801296 --- [http-nio-8887-exec-4] c.e.z.l.mapper.UserMapper.updateUser     : ==>  Preparing: update USER SET userName = ?, TOKEN = ?, modifytime=now(), PHOTO_IMG = ? where userid=? 
+2020-02-25 11:59:08.082 DEBUG 801296 --- [http-nio-8887-exec-4] c.e.z.l.mapper.UserMapper.updateUser     : ==> Parameters: 聪弟(String), 92880433-ed4f-408e-b204-a7660ab924fb(String), https://avatars1.githubusercontent.com/u/33488506?v=4(String), 33488506(String)
+2020-02-25 11:59:08.085 DEBUG 801296 --- [http-nio-8887-exec-4] c.e.z.l.mapper.UserMapper.updateUser     : <==    Updates: 1
+2020-02-25 11:59:08.085  INFO 801296 --- [http-nio-8887-exec-4] c.e.zhaocong.luntan.aop.aspectj.AopLog   : 【返回值】：redirect:/
+2020-02-25 11:59:08.086  INFO 801296 --- [http-nio-8887-exec-4] c.e.zhaocong.luntan.aop.aspectj.AopLog   : 【请求耗时】：2415毫秒
+2020-02-25 11:59:08.113  INFO 801296 --- [http-nio-8887-exec-4] c.e.zhaocong.luntan.aop.aspectj.AopLog   : 【浏览器类型】：CHROME，【操作系统】：WINDOWS_7，【原始User-Agent】：Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36
+2020-02-25 11:59:08.137 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByToken     : ==>  Preparing: select id,userid ,username,token,createtime,modifytime,photo_img from USER where token=? 
+2020-02-25 11:59:08.138 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByToken     : ==> Parameters: 92880433-ed4f-408e-b204-a7660ab924fb(String)
+2020-02-25 11:59:08.140 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByToken     : <==      Total: 1
+2020-02-25 11:59:08.150 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.QuestionMapper.totalCount      : ==>  Preparing: select count(1) from question 
+2020-02-25 11:59:08.151 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.QuestionMapper.totalCount      : ==> Parameters: 
+2020-02-25 11:59:08.155 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.QuestionMapper.totalCount      : <==      Total: 1
+2020-02-25 11:59:08.156 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.mapper.QuestionMapper.findAll    : ==>  Preparing: select id,title,description,gmt_create,gmt_modify,creator,ifnull(comment_count,0) comment_count,ifnull(view_count,0) view_count,praise,tag from question order by gmt_create desc limit ?,? 
+2020-02-25 11:59:08.156 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.mapper.QuestionMapper.findAll    : ==> Parameters: 0(Integer), 3(Integer)
+2020-02-25 11:59:08.159 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.mapper.QuestionMapper.findAll    : <==      Total: 3
+2020-02-25 11:59:08.160 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : ==>  Preparing: select id,userid ,username,token,createtime,modifytime,photo_img from USER where userId=? ORDER BY CREATETIME desc limit 0,1 
+2020-02-25 11:59:08.161 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : ==> Parameters: 33488506(String)
+2020-02-25 11:59:08.162 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : <==      Total: 1
+2020-02-25 11:59:08.163 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : ==>  Preparing: select id,userid ,username,token,createtime,modifytime,photo_img from USER where userId=? ORDER BY CREATETIME desc limit 0,1 
+2020-02-25 11:59:08.164 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : ==> Parameters: 33488506(String)
+2020-02-25 11:59:08.165 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : <==      Total: 1
+2020-02-25 11:59:08.166 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : ==>  Preparing: select id,userid ,username,token,createtime,modifytime,photo_img from USER where userId=? ORDER BY CREATETIME desc limit 0,1 
+2020-02-25 11:59:08.167 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : ==> Parameters: 33488506(String)
+2020-02-25 11:59:08.168 DEBUG 801296 --- [http-nio-8887-exec-7] c.e.z.l.m.UserMapper.findUserByCreator   : <==      Total: 1
+2020-02-25 12:00:18.793  INFO 801296 --- [Thread-19] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-02-25 12:00:18.794  INFO 801296 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-02-25 12:00:18.802  INFO 801296 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
