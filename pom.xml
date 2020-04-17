@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>other commit</java.version>
+		<java.version>my commit</java.version>
 	</properties>
 
 	<dependencies>
