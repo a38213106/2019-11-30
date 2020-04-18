@@ -16,6 +16,8 @@
 
 	<properties>
 		<java.version>other modify</java.version>
+		<java.version>my modify</java.version>
+
 	</properties>
 
 	<dependencies>
